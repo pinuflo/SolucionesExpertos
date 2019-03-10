@@ -16,8 +16,8 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
 
 import { OrdencompraComponent } from './ordencompra/ordencompra.component';
 
-
 import {
+
   MatAutocompleteModule,
   MatBadgeModule,
   MatBottomSheetModule,
@@ -105,7 +105,7 @@ import {
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true } ],
   bootstrap: [AppComponent]

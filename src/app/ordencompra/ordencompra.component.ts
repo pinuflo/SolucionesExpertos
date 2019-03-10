@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { OrdenCompraService } from '../services/orden-compra.service';
 import { UserService } from '../services/user.service';
 
@@ -17,7 +17,16 @@ export class OrdencompraComponent implements OnInit {
   ordenCompraKeys:any = [];
   ocError:string = null;
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private ordenCompraService: OrdenCompraService) { }
+  constructor(private route: ActivatedRoute, private userService: UserService, private ordenCompraService: OrdenCompraService, private router: Router) { }
+
+  back()
+  {
+    this.router.navigate(['/']);
+  }
+
+  accept(){
+    alert("FUNCION NO DISPONIBLE EN PRUEBA");
+  }
 
   ngOnInit() {
     this.code = this.route.snapshot.paramMap.get("code");
@@ -44,6 +53,8 @@ export class OrdencompraComponent implements OnInit {
       (error) =>
       {
         this.loading = false;
+        this.ocError = "Error al cargar la OC";
+
         console.log(error);
       }
 

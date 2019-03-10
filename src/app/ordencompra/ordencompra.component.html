@@ -2,7 +2,10 @@
 
   <h1 class="mat-h1">Formulario OC</h1>
 
-  <mat-grid-list cols="1" >
+
+  <mat-grid-list cols="2" >
+
+  
 
     <mat-grid-tile  [colspan]="1" [rowspan]="5">
 
@@ -53,7 +56,36 @@
         </mat-card-content>
       </mat-card>
 
+      
+
     </mat-grid-tile>
+
+    <mat-grid-tile  [colspan]="1" [rowspan]="1" rowHeight="100px">
+
+
+        <mat-card class="dashboard-card" style="height: 150px;">
+
+            <mat-card-header>
+              <mat-card-title>
+                  Opciones
+              </mat-card-title>
+            </mat-card-header>
+    
+    
+    
+            <mat-card-content class="button-row"  >
+
+                <button (click)="accept()" mat-raised-button color="primary" style="width: 100%" disabled>Aceptar</button> 
+                <br>
+                <button (click)="back()" mat-raised-button color="accent" style="width: 100%;margin-top: 20px;"> Regresar</button> 
+    
+            </mat-card-content>
+        </mat-card>
+
+        
+    </mat-grid-tile>  
+
+
   </mat-grid-list>
 
   
