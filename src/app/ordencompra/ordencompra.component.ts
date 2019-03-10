@@ -15,6 +15,7 @@ export class OrdencompraComponent implements OnInit {
   loading: boolean = true;
   ordenCompra:any = {};
   ordenCompraKeys:any = [];
+  ocError:string = null;
 
   constructor(private route: ActivatedRoute, private userService: UserService, private ordenCompraService: OrdenCompraService) { }
 
@@ -27,16 +28,23 @@ export class OrdencompraComponent implements OnInit {
       (ocSuccess) =>
       {
         this.loading = false;
+        console.log(ocSuccess);
         if(ocSuccess.count == 1)
         {
            this.ordenCompra = ocSuccess.results[0];
            this.ordenCompraKeys = Object.keys(this.ordenCompra);
            console.log(this.ordenCompra);
         }
+        else
+        {
+          this.ocError = "La OC no contiene datos";
+        }
+
       },
       (error) =>
       {
         this.loading = false;
+        console.log(error);
       }
 
     );

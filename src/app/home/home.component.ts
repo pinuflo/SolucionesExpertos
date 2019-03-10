@@ -14,6 +14,7 @@ export class HomeComponent {
   userData : any = {};
   ordenesCompra : any[];
   institucion: string = "";
+  displayedColumns: string[] = ['code','comment','type','accion']
 
   constructor(private userService: UserService) { }
 

@@ -8,52 +8,47 @@
 
 
       <mat-card class="dashboard-card">
+
+
+
+        
         <mat-card-header>
           <mat-card-title>
               Orden de compra {{code}}
           </mat-card-title>
         </mat-card-header>
 
+
+
         <mat-card-content class="dashboard-card-content">
 
             <mat-spinner *ngIf="loading"></mat-spinner>
 
-            <div *ngIf="!loading">
+            <div *ngIf="!loading && !ocError">
 
-                <mat-grid-list cols="4" rowHeight="100px">
-                  
-                    <mat-grid-tile
-                        [colspan]="1"
-                        >
-                            <b>Campo</b>
-                    </mat-grid-tile>
-                    <mat-grid-tile
-                        [colspan]="3"
-                        >
-                            <b>Valor</b>
-                    </mat-grid-tile>
+                <mat-accordion *ngFor="let key of ordenCompraKeys">
 
 
-                    <div *ngFor="let key of ordenCompraKeys">
-                        <mat-grid-tile
-                        [colspan]="1"
-                        >
-                            {{key}}
-                        </mat-grid-tile>
-                        <mat-grid-tile
-                        [colspan]="3"
-                        >
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                         (closed)="panelOpenState = false">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          {{key}}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                          ...
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>
                           {{ordenCompra[key] | json}}
-                        </mat-grid-tile>
-
-                          
-                    </div>
-
-
-                  </mat-grid-list>
-
+                    </mat-expansion-panel>
+                  </mat-accordion>
 
             </div>
+
+            <div *ngIf="ocError">
+                <p style="color:red">{{ocError}}</p>
+            </div>
+   
 
         </mat-card-content>
       </mat-card>
